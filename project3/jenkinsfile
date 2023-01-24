@@ -1,0 +1,26 @@
+@Library('azure-storage-lib@main') _
+
+pipeline
+    agent any
+
+    stages {
+        stage('Read project_config.json using the json shared library to get parameter values')
+            steps {
+                config('pipeline_config.json')
+            }
+        stage('Download a file from Storage Account') {
+            steps {
+                azblob("download", "config.txt")
+            }
+        }
+        stage('Change file content') {
+            steps {
+                replace_string("config.txt","string_to_search", "string_to_replace")
+            }
+        }
+        stage('Upload file to storage account') {
+            steps {
+                azblob("upload", "config.txt")
+            }
+        }
+    }

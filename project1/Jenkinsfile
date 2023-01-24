@@ -1,0 +1,31 @@
+pipeline
+    agent any
+
+    environment {
+        AZURE_CLIENT_ID = credentials('azure_client_id')
+        AZURE_CLIENT_SECRET = credentials('azure_client_secret')
+        AZURE_TENANT_ID = credentials('azure_tenant_id')
+    }
+
+    stages {
+        stage('Login') {
+            steps {
+                az login --service-principle -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET -t $AZURE_TENANT_ID
+            }
+        }
+        stage('Download a file from the Storage Account') {
+            steps {
+                az storage blob download --account-name my_account --container-name my_container --name helloworld --file config.txt --auth-mode login
+            }
+        }
+        stage('Change the file content') {
+            steps {
+                sh 'change some string in the text and save it back, under the same name'
+            }
+        }
+        stage('Upload file to the Storage Account') {
+            steps {
+                az storage blob upload --account-name my_account --container-name my_container --name helloworld --file config.txt --auth-mode login --overwrite true
+            }
+        }
+    }

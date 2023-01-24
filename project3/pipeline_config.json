@@ -1,0 +1,6 @@
+{
+    "pipeline_name": "pipeline1",
+    "storage_account": "storage-account",
+    "blob_name": "blob_name",
+    "file_path": "file_path"
+}

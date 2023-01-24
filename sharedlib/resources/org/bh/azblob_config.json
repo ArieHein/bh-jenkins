@@ -1,0 +1,22 @@
+{
+    "blob_auth": [
+        {
+            "pipeline_name": "pipeline1",
+            "spn_id": "",
+            "spn_secret": "",
+            "tenant_id": ""
+        },
+        {
+            "pipeline_name": "pipeline2",
+            "spn_id": "",
+            "spn_secret": "",
+            "tenant_id": ""
+        },
+        {
+            "pipeline_name": "pipeline3",
+            "spn_id": "",
+            "spn_secret": "",
+            "tenant_id": ""
+        }
+    ]
+}

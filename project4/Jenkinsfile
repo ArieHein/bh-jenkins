@@ -1,0 +1,25 @@
+@Library('my-shared-library') _
+
+pipeline {
+    agent any
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building...'
+                myPythonFunction("build")
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing...'
+                myPythonFunction("test")
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying...'
+                myPythonFunction("deploy")
+            }
+        }
+    }
+}

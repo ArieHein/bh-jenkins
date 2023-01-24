@@ -1,0 +1,21 @@
+@Library('azure-storage-lib@main') _
+
+pipeline
+    agent any
+    stages {
+        stage('Download a file from Storage Account') {
+            steps {
+                azblob("download", "my_account", "my_container", "name", "config.txt")
+            }
+        }
+        stage('Change file content') {
+            steps {
+                sh 'change some string in the text and save it back, under the same name'
+            }
+        }
+        stage('Upload file to storage account') {
+            steps {
+                azblob("upload", "my_account", "my_container", "name", "config.txt")
+            }
+        }
+    }
