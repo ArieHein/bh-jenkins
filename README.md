@@ -1,5 +1,7 @@
 # Jenkins - Shared Libraries, the Python way
 
+****Note: This code is WIP and not complete, use at own risk****
+
 ## General
 
 We are not going to dive deep into Shared Libraries in here, rather, we are going to see how to use python, as an example, to describe all the pipeline steps in a shared library and then use them within a Jenkinsfile. Our examples will use an Azure Storage Account, but naturally this method can be used for all type of resources, all type of clouds and any activity that needs to be reused in multiple ways with multiple starting conditions.
