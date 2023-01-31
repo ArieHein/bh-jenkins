@@ -10,7 +10,7 @@ def get_pipeline_credentials(pipeline_name):
     tenant = credentials(config[pipeline_name]["tenant_id"])
     return spn, secret, tenant
 
-def check_resource(storage_account_name, container_name, file_name)
+def check_resource(storage_account_name, container_name, file_name):
     # check that resource exists via function. (vnext).
     return True
 
