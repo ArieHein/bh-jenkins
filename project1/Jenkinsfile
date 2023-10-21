@@ -27,7 +27,7 @@ pipeline
         }
         stage('Change the file content') {
             steps {
-                sh 'change some string in the text and save it back, under the same name'
+                sh 'change some string in the text file and save it back, under the same name'
             }
         }
         stage('Upload file to the Storage Account') {

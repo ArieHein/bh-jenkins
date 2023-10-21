@@ -2,20 +2,28 @@
 
 pipeline
     agent any
+
+    parameters {
+        string(name: 'account_name', description: 'Storage Account Name')
+        string(name: 'container_name', description: 'Container Name')
+        string(name: 'blob_name', description: 'Blob Name')
+        string(name: 'file_name', description: 'File Name')
+    }
+
     stages {
         stage('Download a file from Storage Account') {
             steps {
-                azblob("download", "my_account", "my_container", "name", "config.txt")
+                azblob("download", "${params.account_name}", "${params.container_name}", "${params.blob_name}", "${params.file_name}")
             }
         }
         stage('Change file content') {
             steps {
-                sh 'change some string in the text and save it back, under the same name'
+                sh 'change some string in the text file and save it back, under the same name'
             }
         }
         stage('Upload file to storage account') {
             steps {
-                azblob("upload", "my_account", "my_container", "name", "config.txt")
+                azblob("upload", "${params.account_name}", "${params.container_name}", "${params.blob_name}", "${params.file_name}")
             }
         }
     }
